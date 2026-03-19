@@ -1,29 +1,26 @@
-
-
-
 def selection_sort(unsorted_list):
     operation_counter = 0
-    unsorted_list_length = len(unsorted_list) #we make loops based on length because we are wanting to keep track and swapping indexes instead of the elements themselves
+    unsorted_list_length = len(unsorted_list)  # we use indexes so we can compare and swap positions in the list
     
-    
-    for outer_index in range (unsorted_list_length):
+    for outer_index in range(unsorted_list_length):
         current_smallest_index = outer_index
         
-        for inner_index in range (outer_index + 1, unsorted_list_length):#+1 so we dont compare the same thing
-            operation_counter+= 1 #count how many operations we do 
-            if unsorted_list[current_smallest_index] > unsorted_list[inner_index]: #this loop just finds the new smallest
-                current_smallest_index = inner_index
-                
-        #once we found the new smallest after a pass we swap items
-                
+        for inner_index in range(outer_index + 1, unsorted_list_length):  # start at +1 so we compare with the next elements
+            operation_counter += 1  # count how many comparisons we do
+            
+            if unsorted_list[current_smallest_index] > unsorted_list[inner_index]:
+                current_smallest_index = inner_index  # find the index of the smallest value
+        
+        # after finding the smallest value, swap it into the correct position
         value_becoming_smallest = unsorted_list[current_smallest_index]
         old_smallest_being_swapped = unsorted_list[outer_index]
-            
+        
         unsorted_list[current_smallest_index] = old_smallest_being_swapped
         unsorted_list[outer_index] = value_becoming_smallest
-    print(operation_counter)            
-    return unsorted_list   
-    
+
+    print(operation_counter)
+    return unsorted_list
+
 small_number_list = [5, 3, 8, 4, 2]
 
 medium_number_list = [42, 17, 93, 58, 21, 7, 64, 39, 81, 12]
@@ -40,4 +37,5 @@ larger_random_numbers = [
 
 sorted_small_number_list = selection_sort(reverse_sorted_numbers)                
                 
-print(sorted_small_number_list)            
+print(sorted_small_number_list)    
+
